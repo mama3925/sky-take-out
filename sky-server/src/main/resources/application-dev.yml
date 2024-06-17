@@ -11,6 +11,7 @@ sky:
   endpoint: oss-cn-hangzhou.aliyuncs.com
 
   access-key-id:
+
   access-key-secret:
 
   bucket-name: sky-take-out-wuyuan
