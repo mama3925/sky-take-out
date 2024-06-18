@@ -40,6 +40,7 @@ public class DishServiceImpl implements DishService {
      *
      * @param dishDTO
      */
+    @Override
     @Transactional
     public void saveWithFlavor(DishDTO dishDTO) {
         Dish dish = new Dish();
@@ -77,6 +78,7 @@ public class DishServiceImpl implements DishService {
      *
      * @param ids
      */
+    @Override
     @Transactional//事务
     public void deleteBatch(List<Long> ids) {
         //判断当前菜品是否能够删除---是否存在起售中的菜品？？
@@ -168,6 +170,7 @@ public class DishServiceImpl implements DishService {
      * @param categoryId
      * @return
      */
+    @Override
     public List<Dish> list(Long categoryId) {
         Dish dish = Dish.builder()
                 .categoryId(categoryId)

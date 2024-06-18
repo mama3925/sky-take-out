@@ -37,6 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @param employeeLoginDTO
      * @return
      */
+    @Override
     public Employee login(EmployeeLoginDTO employeeLoginDTO) {
         String username = employeeLoginDTO.getUsername();
         String password = employeeLoginDTO.getPassword();
@@ -99,6 +100,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @param employeePageQueryDTO
      * @return
      */
+    @Override
     public PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO) {
         PageHelper.startPage(employeePageQueryDTO.getPage(), employeePageQueryDTO.getPageSize());
         Page<Employee> page = employeeMapper.pageQuery(employeePageQueryDTO);
@@ -113,6 +115,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @param status
      * @param id
      */
+    @Override
     public void startOrStop(Integer status, Long id) {
         Employee employee = Employee.builder()
                 .status(status)
@@ -139,6 +142,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      *
      * @param employeeDTO
      */
+    @Override
     public void update(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);

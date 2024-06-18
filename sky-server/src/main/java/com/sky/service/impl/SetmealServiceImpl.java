@@ -32,6 +32,7 @@ public class SetmealServiceImpl implements SetmealService {
      * 新增套餐，同时需要保存套餐和菜品的关联关系
      * @param setmealDTO
      */
+    @Override
     @Transactional
     public void saveWithDish(SetmealDTO setmealDTO) {
         Setmeal setmeal = new Setmeal();
