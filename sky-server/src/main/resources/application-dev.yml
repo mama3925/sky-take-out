@@ -21,3 +21,7 @@ sky:
   port: 6379
   password: woaimama1748
   database: 10
+
+ wechat:
+  appid: wxffb3637a228223b8
+  secret:
