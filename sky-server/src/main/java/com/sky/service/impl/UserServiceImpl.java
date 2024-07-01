@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
         //判断当前用户是否为新用户
         User user = userMapper.getByOpenid(openid);
 
-        //如果是新用户，自动完成注册
+        //如果是新用户，自动完成注册 （这里指的是本地mysql数据库里的user表里没有这个记录。我们认为指的是本地数据库里的新用户）
         if(user == null){
             user = User.builder()
                     .openid(openid)
