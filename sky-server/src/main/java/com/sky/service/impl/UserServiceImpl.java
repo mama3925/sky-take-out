@@ -50,7 +50,6 @@ public class UserServiceImpl implements UserService {
                     .build();
             userMapper.insert(user);//后绪步骤实现
         }
-
         //返回这个用户对象
         return user;
     }

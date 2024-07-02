@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * 分类管理
  */
-@RestController
+@RestController("adminCategoryController")
 @RequestMapping("/admin/category")
 @Api(tags = "分类相关接口")
 @Slf4j
@@ -31,7 +31,7 @@ public class CategoryController {
      */
     @PostMapping
     @ApiOperation("新增分类")
-    public Result<String> save(@RequestBody CategoryDTO categoryDTO){
+    public Result<String> save(@RequestBody CategoryDTO categoryDTO) {
         log.info("新增分类：{}", categoryDTO);
         categoryService.save(categoryDTO);
         return Result.success();
