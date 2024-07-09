@@ -1,3 +1,4 @@
+/*
 package com.sky.controller.admin;
 
 import com.alibaba.druid.support.json.JSONUtils;
@@ -19,9 +20,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 
+*/
 /**
  * 支付回调相关接口
- */
+ *//*
+
 @RestController
 @RequestMapping("/notify")
 @Slf4j
@@ -31,11 +34,13 @@ public class PayNotifyController {
     @Autowired
     private WeChatProperties weChatProperties;
 
-    /**
+    */
+/**
      * 支付成功回调
      *
      * @param request
-     */
+     *//*
+
     @RequestMapping("/paySuccess")
     public void paySuccessNotify(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //读取数据
@@ -58,13 +63,15 @@ public class PayNotifyController {
         responseToWeixin(response);
     }
 
-    /**
+    */
+/**
      * 读取数据
      *
      * @param request
      * @return
      * @throws Exception
-     */
+     *//*
+
     private String readData(HttpServletRequest request) throws Exception {
         BufferedReader reader = request.getReader();
         StringBuilder result = new StringBuilder();
@@ -78,13 +85,15 @@ public class PayNotifyController {
         return result.toString();
     }
 
-    /**
+    */
+/**
      * 数据解密
      *
      * @param body
      * @return
      * @throws Exception
-     */
+     *//*
+
     private String decryptData(String body) throws Exception {
         JSONObject resultObject = JSON.parseObject(body);
         JSONObject resource = resultObject.getJSONObject("resource");
@@ -100,10 +109,12 @@ public class PayNotifyController {
         return plainText;
     }
 
-    /**
+    */
+/**
      * 给微信响应
      * @param response
-     */
+     *//*
+
     private void responseToWeixin(HttpServletResponse response) throws Exception {
         response.setStatus(200);
         HashMap<Object, Object> map = new HashMap<>();
@@ -115,3 +126,4 @@ public class PayNotifyController {
     }
 }
 
+*/
