@@ -252,11 +252,13 @@ public class OrderServiceImpl implements OrderService {
                     new BigDecimal(0.01));//原订单金额) */
 
             //支付状态修改为 退款
-            orders.setPayStatus(Orders.CANCELLED);
-            orders.setCancelReason("用户取消");
-            orders.setCancelTime(LocalDateTime.now());
-            orderMapper.update(orders);
+            log.info("快他妈给我退款！");
+            orders.setPayStatus(Orders.REFUND);
         }
+        orders.setStatus(Orders.CANCELLED); //修改错误
+        orders.setCancelReason("用户取消");
+        orders.setCancelTime(LocalDateTime.now());
+        orderMapper.update(orders);
     }
 
     /**
