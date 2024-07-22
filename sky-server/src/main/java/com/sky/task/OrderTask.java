@@ -3,7 +3,6 @@ package com.sky.task;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.sky.entity.Orders;
 import com.sky.mapper.OrderMapper;
-import jdk.vm.ci.meta.Local;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -28,6 +27,7 @@ public class OrderTask {
     @Scheduled(cron = "0 * * * * ?")
     public void processTimeoutOrder() {
         log.info("处理支付超时订单:{}", new Date());
+//        LocalDateTime time = LocalDateTime.now().minusMinutes(1); //原版这里是15分钟，但是为了调试方便，我改成了1分钟
         LocalDateTime time = LocalDateTime.now().minusMinutes(15);
         // select * from orders where status = 1 and order_time < 当前时间-15分钟
         List<Orders> ordersList = orderMapper.getByStatusAndOrdertimeLT(Orders.PENDING_PAYMENT, time);
@@ -44,11 +44,13 @@ public class OrderTask {
     /**
      * 处理“派送中”状态的订单
      */
+//    @Scheduled(cron = "30 * * * * ?") //原版这里是0 0 1 * * ?，意思是在每天凌晨1点执行，我做了修改
     @Scheduled(cron = "0 0 1 * * ?")
     public void processDeliveryOrder() {
         log.info("处理支付派送中订单:{}", new Date());
         // select * from orders where status = 4 and order_time < 当前时间-1小时
-        LocalDateTime time = LocalDateTime.now().minusHours(1);
+//        LocalDateTime time = LocalDateTime.now().minusMinutes(1); //原版这里是1小时，我改为1分钟，方便调试
+        LocalDateTime time = LocalDateTime.now().minusMinutes(60);
         List<Orders> ordersList = orderMapper.getByStatusAndOrdertimeLT(Orders.DELIVERY_IN_PROGRESS, time);
         if (ordersList != null && ordersList.size() > 0) {
             ordersList.forEach(order -> {
